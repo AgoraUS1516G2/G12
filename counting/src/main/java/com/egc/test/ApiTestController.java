@@ -50,43 +50,6 @@ public class ApiTestController {
 		System.out.println(name);
 	}
 
-//	@RequestMapping("/recuento")
-//	public Map<String, Integer> recuento(
-//			@RequestParam(value = "idVotacion", required = true) int idVotacion)
-//			throws URISyntaxException, IOException {
-//
-//		URI uri = new URI(
-//				"http://localhost:8080/Frontend-Resultados/rest/votacion/post.do?id_votacion="
-//						+ idVotacion);
-//
-//		RestTemplate restTemplate = new RestTemplate();
-//		Votos votos = restTemplate.getForObject(
-//				"http://php-egc.rhcloud.com/get_votes.php?votation_id="
-//						+ idVotacion, Votos.class);
-//
-//		Map<String, Integer> recuento = Algoritmo.Algoritmo1(votos.getVotes());
-//
-//		restTemplate.postForObject(uri, recuento, Map.class);
-//
-//		return recuento;
-//
-//	}
-
-//	@RequestMapping("/recuento2")
-//	public Map<String, Integer> recuento2(
-//			@RequestParam(value = "idVotacion", required = true) int idVotacion) {
-//
-//		RestTemplate restTemplate = new RestTemplate();
-//		Votos votos = restTemplate.getForObject(
-//				"http://php-egc.rhcloud.com/get_votes.php?votation_id="
-//						+ idVotacion, Votos.class);
-//
-//		Map<String, Integer> recuento = Algoritmo.Algoritmo1(votos.getVotes());
-//
-//		return recuento;
-//
-//	}
-
 	@RequestMapping("/recuento3")
 	public List<Resultado> recuento3(
 			@RequestParam(value = "idVotacion", required = true) String idVotacion)
