@@ -3,13 +3,9 @@ package algoritmos;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.Key;
-import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,23 +16,15 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.xml.bind.DatatypeConverter;
-
-import main.Authority;
-import main.AuthorityImpl;
 
 import com.google.gson.Gson;
 
-import sun.misc.BASE64Decoder;
-
-import java.security.spec.PKCS8EncodedKeySpec;
-
 import domain.Answer;
 import domain.Resultado;
-import domain.Voto;
 import domain.VotoAntiguo;
-import domain.VotoAux;
 import domain.VotoNuevo;
+import main.AuthorityImpl;
+import sun.misc.BASE64Decoder;
 
 @SuppressWarnings("restriction")
 public class Algoritmo {

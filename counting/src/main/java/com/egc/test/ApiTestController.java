@@ -1,25 +1,13 @@
 package com.egc.test;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
-import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-
-import main.Authority;
-import main.AuthorityImpl;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,10 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import algoritmos.Algoritmo;
 import domain.Resultado;
 import domain.VotoAntiguo;
-import domain.VotoNuevo;
-import domain.Votos;
 import domain.VotosCifrados;
-import domain.VotosNuevo;
 
 @RestController
 public class ApiTestController {
