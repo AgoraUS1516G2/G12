@@ -1,6 +1,6 @@
 # Subsistema de Recuento de AgoraUS
 
-Este subsistema realizará el recuento de una votación determinada. Para llevarlo a cabo tendrá que pedir los votos al subsistema de almacenamiento y deberá lanzar la tarea de recuento sincronizando las diferentes autoridades. Soportará distinto tipos de recuentos, por lo que el antiguo subsistema de Modificación de Resultados será absorbido por este subsistema. 
+Este subsistema realizará el recuento de una votación determinada. Para llevarlo a cabo tendrá que pedir los votos al subsistema de almacenamiento y deberá lanzar la tarea de recuento sincronizando las diferentes autoridades. Soportará distintos tipos de recuentos, por lo que el antiguo subsistema de Modificación de Resultados será absorbido por este subsistema. 
 
 ### Miembros
 
