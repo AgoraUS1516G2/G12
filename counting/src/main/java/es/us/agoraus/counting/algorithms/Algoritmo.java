@@ -1,4 +1,4 @@
-package algoritmos;
+package es.us.agoraus.counting.algorithms;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -19,10 +19,10 @@ import javax.crypto.NoSuchPaddingException;
 
 import com.google.gson.Gson;
 
-import domain.Answer;
-import domain.Resultado;
-import domain.VotoAntiguo;
-import domain.VotoNuevo;
+import es.us.agoraus.counting.domain.Answer;
+import es.us.agoraus.counting.domain.Resultado;
+import es.us.agoraus.counting.domain.VotoAntiguo;
+import es.us.agoraus.counting.domain.VotoNuevo;
 import main.AuthorityImpl;
 import sun.misc.BASE64Decoder;
 

@@ -1,11 +1,11 @@
-package domain;
+package es.us.agoraus.counting.domain;
 
 import java.util.List;
 
-public class VotosCifrados {
+public class Votos {
 
 	private Integer msg;
-	private List<String> votes;
+	private List<Voto> votes;
 
 	public Integer getMsg() {
 		return this.msg;
@@ -15,11 +15,11 @@ public class VotosCifrados {
 		this.msg = msg;
 	}
 
-	public List<String> getVotes() {
+	public List<Voto> getVotes() {
 		return votes;
 	}
 
-	public void setVotes(List<String> votes) {
+	public void setVotes(List<Voto> votes) {
 		this.votes = votes;
 	}
 

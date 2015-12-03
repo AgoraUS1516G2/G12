@@ -1,11 +1,11 @@
-package domain;
+package es.us.agoraus.counting.domain;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Voto {
+public class VotosNuevo {
 	
 	List<String> votes;
 

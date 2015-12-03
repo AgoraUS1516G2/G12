@@ -1,4 +1,4 @@
-package com.egc.test;
+package es.us.agoraus.counting.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
-import domain.Voto;
+import es.us.agoraus.counting.domain.Voto;
 
 /**
  * Handles requests for the application home page.

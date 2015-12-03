@@ -1,4 +1,4 @@
-package algoritmos;
+package es.us.agoraus.counting.algorithms;
  
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;

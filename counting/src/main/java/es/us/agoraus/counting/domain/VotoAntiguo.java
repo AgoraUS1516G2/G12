@@ -1,4 +1,4 @@
-package domain;
+package es.us.agoraus.counting.domain;
 
 public class VotoAntiguo {
 

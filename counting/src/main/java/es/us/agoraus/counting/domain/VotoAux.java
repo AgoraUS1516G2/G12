@@ -1,4 +1,4 @@
-package domain;
+package es.us.agoraus.counting.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

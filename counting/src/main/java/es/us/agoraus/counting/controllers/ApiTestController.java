@@ -1,4 +1,4 @@
-package com.egc.test;
+package es.us.agoraus.counting.controllers;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import algoritmos.Algoritmo;
-import domain.Resultado;
-import domain.VotoAntiguo;
-import domain.VotosCifrados;
+import es.us.agoraus.counting.algorithms.Algoritmo;
+import es.us.agoraus.counting.domain.Resultado;
+import es.us.agoraus.counting.domain.VotoAntiguo;
+import es.us.agoraus.counting.domain.VotosCifrados;
 
 @RestController
 public class ApiTestController {
