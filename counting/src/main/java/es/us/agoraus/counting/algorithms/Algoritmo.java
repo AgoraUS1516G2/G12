@@ -4,12 +4,9 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.crypto.BadPaddingException;
@@ -21,13 +18,16 @@ import com.google.gson.Gson;
 
 import es.us.agoraus.counting.domain.Answer;
 import es.us.agoraus.counting.domain.Resultado;
-import es.us.agoraus.counting.domain.VotoAntiguo;
 import es.us.agoraus.counting.domain.VotoNuevo;
-import main.AuthorityImpl;
+import es.us.agoraus.counting.security.Token;
+import main.java.AuthorityImpl;
 import sun.misc.BASE64Decoder;
 
 @SuppressWarnings("restriction")
 public class Algoritmo {
+	
+	//private static Integer token;
+	
 	// Suponemos que la base de datos almacenara la informacion de la siguiente
 	// manera: "PP", "PSOE", "PP", "PODEMOS", ...
 	// Recorreremos toda esa coleccion, de forma que obtengamos los nombres de
@@ -35,7 +35,7 @@ public class Algoritmo {
 	// valores)
 
 	// La supuesta lista que nos pasan
-
+/*
 	public static Map<String, Integer> Algoritmo1(List<String> votos) {
 
 		// Suponemos que la coleccion "votos" es lo que hemos recuperado de la
@@ -64,8 +64,8 @@ public class Algoritmo {
 		}
 
 		return resultados;
-	}
-
+	}*/
+/*
 	// En el caso de que no se nos pase una lista de strings, sino una lista de
 	// votos
 	// se usara este algoritmo, que hace lo mismo que el algoritmo de arriba,
@@ -90,25 +90,45 @@ public class Algoritmo {
 			}
 		}
 		return resultados;
-	}
+	}*/
 
-	public static List<Resultado> algoritmo3(String idVotacion,
-			List<String> votos) throws BadPaddingException,
-			NoSuchAlgorithmException, InvalidKeySpecException,
-			NoSuchPaddingException, InvalidKeyException,
-			IllegalBlockSizeException {
-		AuthorityImpl auth = new AuthorityImpl();
-		List<VotoNuevo> votes = new ArrayList<VotoNuevo>();
-		String key = auth.getPrivateKey(idVotacion);
+	
+	/**
+	 * This function does the natural counting algorithm.
+	 * @param surveyId. The id of the survey obtained in the controller
+	 * @param votos
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Resultado> naturalCountingAlgorithm(String votationId,
+			List<String> votos) throws Exception {
+		
+		// First, the variables the algorithm needs are created
+		Integer token;
+		Integer numericSurveyId;
+		AuthorityImpl auth;
+		List<VotoNuevo> votes;
+		BASE64Decoder decoder;
+		String key;
+		byte[] bytesDecode; 
+		
+		// Second, the variables are initialized
+		numericSurveyId = Integer.valueOf(votationId);
+		token = Token.calculateToken(numericSurveyId);
+		auth = new AuthorityImpl();
+		votes =  new ArrayList<VotoNuevo>();
+		decoder = new BASE64Decoder();
+		key = auth.getPrivateKey(votationId,token);
+		
+		// Third, 
 		for (String s : votos) {
-			BASE64Decoder decoder = new BASE64Decoder();
 
 			try {
-				byte[] bytesDecode = decoder.decodeBuffer(s);
+				 bytesDecode = decoder.decodeBuffer(s);
 
-				if (auth.checkVote(bytesDecode, idVotacion)) {
+				if (auth.checkVote(bytesDecode, votationId, token)) {
 					String res = null;
-					res = auth.decrypt(idVotacion, bytesDecode);
+					res = auth.decrypt(votationId, bytesDecode, token);
 
 					// Voto voto = mapper.readValue(res,new
 					// TypeReference<Voto>() {});
