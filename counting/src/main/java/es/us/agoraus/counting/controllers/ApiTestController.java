@@ -1,13 +1,6 @@
 package es.us.agoraus.counting.controllers;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +15,7 @@ import es.us.agoraus.counting.domain.VotosCifrados;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
+@RequestMapping(value="/count")
 public class ApiTestController {
 	
 	@Autowired
@@ -51,14 +45,13 @@ public class ApiTestController {
 		System.out.println(name);
 	}
 
-	@RequestMapping("/recuento3")
-	public List<Resultado> recuento3(@RequestParam(value = "idVotacion", required = true) String pollId)
-			throws BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException,
-			NoSuchPaddingException, IllegalBlockSizeException {
+	@RequestMapping("/natural")
+	public List<Resultado> naturalCounting(@RequestParam(value = "votationId", required = true) String votationId)
+			throws Exception {
 
-		VotosCifrados votos = storageService.getVotesForPoll(pollId);
+		VotosCifrados votos = storageService.getVotesForPoll(votationId);
 
-		List<Resultado> resultados = Algoritmo.algoritmo3(pollId, votos.getVotes());
+		List<Resultado> resultados = Algoritmo.naturalCountingAlgorithm(votationId, votos.getVotes());
 		return resultados;
 
 	}
