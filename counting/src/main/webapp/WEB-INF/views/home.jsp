@@ -7,18 +7,22 @@
 <body>
 <h1>
 
-	Grupo encargado del "Recuento"  
+	Subsistema "Recuento y Modificación de Resultados"  
 	
 </h1>
 
 <P> 
 ${serverTime} </br>
 
+Subsistema encargado de la realización del recuento y la modificación de los 
+resultados de una votación determinada. Para la realización del recuento 
+se accederá a la base de datos proporcionada por almacenamiento 
+y utilizará los métodos proporcionados por verificación para descifrar
+los votos obtenidos </P>
 
-Realizará el recuento de una votación determinada. Para realizar el recuento tendrá que 
-pedir los votos al almacenamiento de votos y deberá lanzar la tarea de recuento 
-sincronizando las diferentes autoridades. </P>
-
-Prueba de funcionamiento de la api rest: ${Id}
+API REST del subsistema: 
+<p>* / --> Welcome del proyecto</p>
+<p>* /test --> Test de funcionamiento</p> 
+<p>* /count/natural --> Recuento natural</p>
 </body>
 </html>

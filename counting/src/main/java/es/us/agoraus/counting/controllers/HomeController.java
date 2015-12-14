@@ -27,21 +27,9 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-		RestTemplate restTemplate = new RestTemplate();
-		Voto page = restTemplate.getForObject(
-				"http://graph.facebook.com/pivotalsoftware", Voto.class);
+	public String home() {
 		
-		
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-//		model.addAttribute("Id", page.getId());
+		logger.info("Ejecución de método welcome en curso.");
 		
 		return "home";
 	}
