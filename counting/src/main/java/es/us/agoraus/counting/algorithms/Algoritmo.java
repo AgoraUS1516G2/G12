@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 import es.us.agoraus.counting.domain.Answer;
 import es.us.agoraus.counting.domain.Resultado;
-import es.us.agoraus.counting.domain.VotoNuevo;
+import es.us.agoraus.counting.domain.Voto;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 
@@ -31,13 +31,13 @@ public class Algoritmo {
 		Integer token;
 		Integer numericSurveyId;
 		AuthorityImpl auth;
-		List<VotoNuevo> votes;
+		List<Voto> votes;
 
 		// Second, the variables are initialized
 		numericSurveyId = Integer.valueOf(votationId);
 		token = Token.calculateToken(numericSurveyId);
 		auth = new AuthorityImpl();
-		votes = new ArrayList<VotoNuevo>();
+		votes = new ArrayList<Voto>();
 
 		// Third,
 		for (byte[] s : votos) {
@@ -52,14 +52,14 @@ public class Algoritmo {
 				// TypeReference<Voto>() {});
 
 				Gson gson = new Gson();
-				VotoNuevo vot = gson.fromJson(res, VotoNuevo.class);
+				Voto vot = gson.fromJson(res, Voto.class);
 				votes.add(vot);
 
 			}
 
 		}
 		Set<String> claves = new HashSet<String>();
-		for (VotoNuevo v : votes) {
+		for (Voto v : votes) {
 			for (Answer a : v.getAnswers()) {
 				claves.add(a.getQuestion());
 			}
@@ -69,7 +69,7 @@ public class Algoritmo {
 			resultados.add(new Resultado(c, 0, 0));
 
 		}
-		for (VotoNuevo v : votes) {
+		for (Voto v : votes) {
 			for (Resultado r : resultados) {
 				for (Answer a : v.getAnswers()) {
 
