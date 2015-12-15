@@ -22,7 +22,7 @@ los votos obtenidos </P>
 
 API REST del subsistema: 
 <p>* / --> Welcome del proyecto</p>
-<p>* /test --> Test de funcionamiento</p> 
-<p>* /count/natural --> Recuento natural</p>
+<p>* /count/predefined --> Test de funcionamiento</p> 
+<p>* /count/natural?votationId=* --> Recuento natural</p>
 </body>
 </html>
