@@ -1,18 +1,9 @@
 package es.us.agoraus.counting.algorithms;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import com.google.gson.Gson;
 
@@ -21,127 +12,51 @@ import es.us.agoraus.counting.domain.Resultado;
 import es.us.agoraus.counting.domain.VotoNuevo;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
-import sun.misc.BASE64Decoder;
 
-@SuppressWarnings("restriction")
 public class Algoritmo {
-	
-	//private static Integer token;
-	
-	// Suponemos que la base de datos almacenara la informacion de la siguiente
-	// manera: "PP", "PSOE", "PP", "PODEMOS", ...
-	// Recorreremos toda esa coleccion, de forma que obtengamos los nombres de
-	// cada votacion, y los almacenaremos en un hashset (para que no se repitan
-	// valores)
 
-	// La supuesta lista que nos pasan
-/*
-	public static Map<String, Integer> Algoritmo1(List<String> votos) {
-
-		// Suponemos que la coleccion "votos" es lo que hemos recuperado de la
-		// base de datos
-
-		Set<String> claves = new HashSet<String>();
-
-		for (String s : votos) {
-			claves.add(s);
-		}
-		// Ahora, una vez tenemos las claves,crearemos un mapa al que
-		// asignaremos a cada clave su valor.
-		Map<String, Integer> resultados = new HashMap<String, Integer>();
-
-		// Iniciamos el mapa con los valores a cero
-		for (String s1 : claves) {
-			resultados.put(s1, 0);
-		}
-		// Recorremos la lista de votos y adjudicamos el numero de veces
-		// repetida a su
-		// nombre
-		for (String s2 : votos) {
-			if (resultados.containsKey(s2)) {
-				resultados.put(s2, resultados.get(s2) + 1);
-			}
-		}
-
-		return resultados;
-	}*/
-/*
-	// En el caso de que no se nos pase una lista de strings, sino una lista de
-	// votos
-	// se usara este algoritmo, que hace lo mismo que el algoritmo de arriba,
-	// pero sacando de la
-	// entidad "VotoAntiguo" su nombre.
-	public static Map<String, Integer> algoritmo2(List<VotoAntiguo> votos) {
-		Set<String> claves = new HashSet<String>();
-		List<String> votaciones = new ArrayList<String>();
-		for (VotoAntiguo v : votos) {
-			votaciones.add(v.getNombre());
-		}
-		for (String s : votaciones) {
-			claves.add(s);
-		}
-		Map<String, Integer> resultados = new HashMap<String, Integer>();
-		for (String s1 : claves) {
-			resultados.put(s1, 0);
-		}
-		for (String s2 : votaciones) {
-			if (resultados.containsKey(s2)) {
-				resultados.put(s2, resultados.get(s2) + 1);
-			}
-		}
-		return resultados;
-	}*/
-
-	
 	/**
 	 * This function does the natural counting algorithm.
-	 * @param surveyId. The id of the survey obtained in the controller
+	 * 
+	 * @param surveyId.
+	 *            The id of the survey obtained in the controller
 	 * @param votos
 	 * @return
 	 * @throws Exception
 	 */
-	public static List<Resultado> naturalCountingAlgorithm(String votationId,
-			List<String> votos) throws Exception {
+	public static List<Resultado> naturalCountingAlgorithm(String votationId, List<byte[]> votos) throws Exception {
+
 		
 		// First, the variables the algorithm needs are created
 		Integer token;
 		Integer numericSurveyId;
 		AuthorityImpl auth;
 		List<VotoNuevo> votes;
-		BASE64Decoder decoder;
-		String key;
-		byte[] bytesDecode; 
-		
+
 		// Second, the variables are initialized
 		numericSurveyId = Integer.valueOf(votationId);
 		token = Token.calculateToken(numericSurveyId);
 		auth = new AuthorityImpl();
-		votes =  new ArrayList<VotoNuevo>();
-		decoder = new BASE64Decoder();
-		key = auth.getPrivateKey(votationId,token);
-		
-		// Third, 
-		for (String s : votos) {
+		votes = new ArrayList<VotoNuevo>();
 
-			try {
-				 bytesDecode = decoder.decodeBuffer(s);
+		// Third,
+		for (byte[] s : votos) {
 
-				if (auth.checkVote(bytesDecode, votationId, token)) {
-					String res = null;
-					res = auth.decrypt(votationId, bytesDecode, token);
+			// bytesDecode = decoder.decodeBuffer(s);
 
-					// Voto voto = mapper.readValue(res,new
-					// TypeReference<Voto>() {});
+			if (auth.checkVote(s, votationId, token)) {
+				String res = null;
+				res = auth.decrypt(votationId, s, token);
 
-					Gson gson = new Gson();
-					VotoNuevo vot = gson.fromJson(res, VotoNuevo.class);
-					votes.add(vot);
+				// Voto voto = mapper.readValue(res,new
+				// TypeReference<Voto>() {});
 
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Gson gson = new Gson();
+				VotoNuevo vot = gson.fromJson(res, VotoNuevo.class);
+				votes.add(vot);
+
 			}
+
 		}
 		Set<String> claves = new HashSet<String>();
 		for (VotoNuevo v : votes) {
@@ -171,22 +86,5 @@ public class Algoritmo {
 		}
 
 		return resultados;
-	}
-
-	public static String decrypt(byte[] cipherText, Key privateKey)
-			throws BadPaddingException, InvalidKeyException,
-			NoSuchAlgorithmException, NoSuchPaddingException,
-			IllegalBlockSizeException {
-
-		String res;
-		Cipher rsa;
-
-		rsa = Cipher.getInstance("RSA");
-		rsa.init(Cipher.DECRYPT_MODE, privateKey);
-
-		byte[] bytesDesencriptados = rsa.doFinal(cipherText);
-		res = new String(bytesDesencriptados);
-		return res;
-
 	}
 }
