@@ -5,7 +5,7 @@ import java.util.List;
 public class VotosCifrados {
 
 	private Integer msg;
-	private List<byte[]> votes;
+	private List<String> votes;
 
 	public Integer getMsg() {
 		return this.msg;
@@ -15,11 +15,11 @@ public class VotosCifrados {
 		this.msg = msg;
 	}
 
-	public List<byte[]> getVotes() {
+	public List<String> getVotes() {
 		return votes;
 	}
 
-	public void setVotes(List<byte[]> votes) {
+	public void setVotes(List<String> votes) {
 		this.votes = votes;
 	}
 
