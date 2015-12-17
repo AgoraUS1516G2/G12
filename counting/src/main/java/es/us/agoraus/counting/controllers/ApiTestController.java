@@ -59,7 +59,7 @@ public class ApiTestController {
 		VotosCifrados votes;
 		List<byte[]> byteVotes;
 		
-		votes= storageService.getVotesForPoll(pollId);
+		votes = storageService.getVotesForPoll(pollId);
 		
 		if ((codification == null) || (codification == "normal")) {
 			byteVotes = Transformations.transformStringToByteArray(votes.getVotes());
