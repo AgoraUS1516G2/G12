@@ -12,7 +12,7 @@ import es.us.agoraus.counting.domain.Voto;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 
-public abstract class BaseAlgorithm {
+public abstract class BaseAlgorithm implements CountingAlgorithm {
 
 	private static final Logger LOG = Logger.getLogger(BaseAlgorithm.class.getCanonicalName());
 

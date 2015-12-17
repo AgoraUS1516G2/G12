@@ -9,7 +9,7 @@ import es.us.agoraus.counting.domain.Answer;
 import es.us.agoraus.counting.domain.Resultado;
 import es.us.agoraus.counting.domain.Voto;
 
-public class Referendum extends BaseAlgorithm {
+public class ReferendumAlgorithm extends BaseAlgorithm {
 
 	@Override
 	protected List<Resultado> countingLogic(List<Voto> votes) {

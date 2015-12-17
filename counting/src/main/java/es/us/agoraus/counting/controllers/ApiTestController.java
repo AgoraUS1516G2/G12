@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.us.agoraus.counting.algorithms.Algoritmo;
+import es.us.agoraus.counting.algorithms.CountingAlgorithm;
+import es.us.agoraus.counting.algorithms.ReferendumAlgorithm;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
 import es.us.agoraus.counting.domain.Resultado;
@@ -33,7 +34,7 @@ public class ApiTestController {
 	public List<Resultado> predefinedCounting()
 			throws Exception {
 
-		List <Resultado> resultados = Test.naturalCountingAlgorithmTestVotation();
+		List <Resultado> resultados = Test.referendumAlgorithmTestVotation();
 		
 		return resultados;
 
@@ -66,7 +67,8 @@ public class ApiTestController {
 			byteVotes = Transformations.transformByteArrayStringToByteArray(votes.getVotes());
 		}
 		
-		List<Resultado> resultados = Algoritmo.naturalCountingAlgorithm(pollId, byteVotes);
+		final CountingAlgorithm algorithm = new ReferendumAlgorithm();
+		final List<Resultado> resultados = algorithm.count(pollId, byteVotes);
 		
 		return resultados;
 
