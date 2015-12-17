@@ -46,19 +46,19 @@ public class ApiTestController {
 	 * in order to the codification obtained in the method call, and 
 	 * finally it runs the algorithm where the decrypt is done and the
 	 * votes are counted.
-	 * @param votationId
+	 * @param pollId
 	 * @param codification
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/natural")
-	public List<Resultado> naturalCounting(@RequestParam(value = "votationId", required = true) String votationId, @RequestParam (value = "cod", required = false) String codification)
+	@RequestMapping("/referendum")
+	public List<Resultado> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification)
 			throws Exception {
 		
 		VotosCifrados votes;
 		List<byte[]> byteVotes;
 		
-		votes= storageService.getVotesForPoll(votationId);
+		votes= storageService.getVotesForPoll(pollId);
 		
 		if ((codification == null) || (codification == "normal")) {
 			byteVotes = Transformations.transformStringToByteArray(votes.getVotes());
@@ -66,7 +66,7 @@ public class ApiTestController {
 			byteVotes = Transformations.transformByteArrayStringToByteArray(votes.getVotes());
 		}
 		
-		List<Resultado> resultados = Algoritmo.naturalCountingAlgorithm(votationId, byteVotes);
+		List<Resultado> resultados = Algoritmo.naturalCountingAlgorithm(pollId, byteVotes);
 		
 		return resultados;
 
