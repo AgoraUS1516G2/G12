@@ -18,7 +18,7 @@ public class Test {
 		cryptedVotes = new ArrayList<byte[]>();
 		result= new ArrayList<Resultado>();
 		auth = new AuthorityImpl();
-		token = Token.calculateToken(1);
+		token = Token.calculateToken(2);
 		
 		String vote1 = "{\"age\": \"24\",\"answers\":[{\"question\":\"¿Es usuario de linux?\",\"answer_question\":\"SI\"}"
                 + "],\"id\": 1,\"autonomous_community\": \"Andalucia\",\"genre\": \"Masculino\",\"id_poll\": 32778}";
@@ -33,17 +33,17 @@ public class Test {
 				+ "],\"id\": 1,\"autonomous_community\": \"Andalucia\",\"genre\": \"Masculino\",\"id_poll\": 32778}";
         
         
-        byte[] cryptedVote1 = auth.encrypt("1", vote1, token);
-        byte[] cryptedVote2 = auth.encrypt("1", vote2, token);
-        byte[] cryptedVote3 = auth.encrypt("1", vote3, token);
-        byte[] cryptedVote4 = auth.encrypt("1", vote4, token);
+        byte[] cryptedVote1 = auth.encrypt("2", vote1, token);
+        byte[] cryptedVote2 = auth.encrypt("2", vote2, token);
+        byte[] cryptedVote3 = auth.encrypt("2", vote3, token);
+        byte[] cryptedVote4 = auth.encrypt("2", vote4, token);
         
         cryptedVotes.add(cryptedVote1);
         cryptedVotes.add(cryptedVote2);
         cryptedVotes.add(cryptedVote3);
         cryptedVotes.add(cryptedVote4);
         
-        result = Algoritmo.naturalCountingAlgorithm("1", cryptedVotes);
+        result = Algoritmo.naturalCountingAlgorithm("2", cryptedVotes);
         
         return result;
 	
