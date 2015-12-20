@@ -85,6 +85,9 @@ public class ApiController {
 	
 	@RequestMapping("/{pollId}/charts")
 	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
+		if (segment == null) {
+			segment = SegmentationCriteria.age;
+		}
 		final List<Result> result = referendum(pollId, codification, segment);
 		ModelAndView model = new ModelAndView("charts");
 		model.addObject("data", result);
