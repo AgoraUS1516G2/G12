@@ -1,10 +1,10 @@
 package es.us.agoraus.counting.domain;
 
-public class Resultado {
+public class ReferendumResult implements Result {
 	String pregunta;
 	Integer numeroSi;
 	Integer numeroNo;
-	public Resultado(String pregunta, Integer numeroSi, Integer numeroNo) {
+	public ReferendumResult(String pregunta, Integer numeroSi, Integer numeroNo) {
 		super();
 		this.pregunta = pregunta;
 		this.numeroSi = numeroSi;
