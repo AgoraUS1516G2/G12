@@ -3,6 +3,7 @@ package es.us.agoraus.counting.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,8 +56,8 @@ public class ApiController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/referendum")
-	public List<Result> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
+	@RequestMapping("/{pollId}")
+	public List<Result> referendum(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
 		
 		EncryptedVotes votes;
 		List<byte[]> byteVotes;
