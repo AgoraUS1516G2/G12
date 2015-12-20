@@ -19,7 +19,7 @@ import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
 @RequestMapping(value="/count")
-public class ApiTestController {
+public class ApiController {
 	
 	@Autowired
 	StorageServiceImpl storageService;
