@@ -1,32 +1,32 @@
 package es.us.agoraus.counting.domain;
 
 public class ReferendumResult implements Result {
-	String pregunta;
-	Integer numeroSi;
-	Integer numeroNo;
-	public ReferendumResult(String pregunta, Integer numeroSi, Integer numeroNo) {
+	String question;
+	Integer yes;
+	Integer no;
+	public ReferendumResult(String question, Integer yes, Integer no) {
 		super();
-		this.pregunta = pregunta;
-		this.numeroSi = numeroSi;
-		this.numeroNo = numeroNo;
+		this.question = question;
+		this.yes = yes;
+		this.no = no;
 	}
-	public String getPregunta() {
-		return pregunta;
+	public String getQuestion() {
+		return question;
 	}
-	public void setPregunta(String pregunta) {
-		this.pregunta = pregunta;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	public Integer getNumeroSi() {
-		return numeroSi;
+	public Integer getYes() {
+		return yes;
 	}
-	public void setNumeroSi(Integer numeroSi) {
-		this.numeroSi = numeroSi;
+	public void setYes(Integer yes) {
+		this.yes = yes;
 	}
-	public Integer getNumeroNo() {
-		return numeroNo;
+	public Integer getNo() {
+		return no;
 	}
-	public void setNumeroNo(Integer numeroNo) {
-		this.numeroNo = numeroNo;
+	public void setNo(Integer no) {
+		this.no = no;
 	}
 	
 	

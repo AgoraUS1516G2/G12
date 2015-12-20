@@ -38,10 +38,10 @@ public class AlgorithmTest {
 
 		assert !resultados.isEmpty();
 
-		assert ((ReferendumResult) resultados.get(1)).getNumeroSi() == 1;
-		assert ((ReferendumResult) resultados.get(1)).getNumeroNo() == 1;
-		assert ((ReferendumResult) resultados.get(0)).getNumeroSi() == 2;
-		assert ((ReferendumResult) resultados.get(0)).getNumeroNo() == 0;
+		assert ((ReferendumResult) resultados.get(1)).getYes() == 1;
+		assert ((ReferendumResult) resultados.get(1)).getNo() == 1;
+		assert ((ReferendumResult) resultados.get(0)).getYes() == 2;
+		assert ((ReferendumResult) resultados.get(0)).getNo() == 0;
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class AlgorithmTest {
 
 		assert !resultados.isEmpty();
 
-		assert ((ReferendumResult) resultados.get(0)).getNumeroNo() == 0;
+		assert ((ReferendumResult) resultados.get(0)).getNo() == 0;
 
 	}
 
@@ -66,7 +66,7 @@ public class AlgorithmTest {
 
 		assert !resultados.isEmpty();
 
-		assert ((ReferendumResult) resultados.get(0)).getNumeroSi() == 2;
+		assert ((ReferendumResult) resultados.get(0)).getYes() == 2;
 
 	}
 
@@ -79,7 +79,7 @@ public class AlgorithmTest {
 
 		assert !resultados.isEmpty();
 
-		assert ((ReferendumResult) resultados.get(1)).getNumeroNo() == 1;
+		assert ((ReferendumResult) resultados.get(1)).getNo() == 1;
 
 	}
 
@@ -92,7 +92,7 @@ public class AlgorithmTest {
 
 		assert !resultados.isEmpty();
 
-		assert ((ReferendumResult) resultados.get(1)).getNumeroSi() == 1;
+		assert ((ReferendumResult) resultados.get(1)).getYes() == 1;
 
 	}
 

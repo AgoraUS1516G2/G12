@@ -13,8 +13,8 @@ import es.us.agoraus.counting.algorithms.SegmentationAlgorithm;
 import es.us.agoraus.counting.algorithms.SegmentationCriteria;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
+import es.us.agoraus.counting.domain.EncryptedVotes;
 import es.us.agoraus.counting.domain.Result;
-import es.us.agoraus.counting.domain.VotosCifrados;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
@@ -43,7 +43,7 @@ public class ApiTestController {
 	}
 
 	/**
-	 * The following method compute a votation, obtaining the crypted 
+	 * The following method computes a votation retrieving the encrypted 
 	 * votes from a database. We offer two ways to code the votes
 	 * of a certain votation. After we obtain the votes, they are transformed
 	 * in order to the codification obtained in the method call, and 
@@ -51,14 +51,14 @@ public class ApiTestController {
 	 * votes are counted.
 	 * @param pollId
 	 * @param codification
+	 * @param segment
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping("/referendum")
-	public List<Result> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment)
-			throws Exception {
+	public List<Result> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
 		
-		VotosCifrados votes;
+		EncryptedVotes votes;
 		List<byte[]> byteVotes;
 		
 		votes = storageService.getVotesForPoll(pollId);

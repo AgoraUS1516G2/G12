@@ -48,7 +48,8 @@ public class Test {
         encryptedVotes.add(encryptedVote3);
         encryptedVotes.add(encryptedVote4);
         
-        result = Algoritmo.naturalCountingAlgorithm(pollIdStr, encryptedVotes);
+        final CountingAlgorithm algorithm = new ReferendumAlgorithm();
+        result = algorithm.count(pollIdStr, encryptedVotes);
 
         return result;
 	
