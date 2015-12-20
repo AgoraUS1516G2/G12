@@ -9,7 +9,12 @@ public class Token {
 			961864, 976931, 982612};
 	
 	
-
+	/**
+	 * The following method calculates a Token to verify the access to
+	 * the data stored in Verification subsystem's database
+	 * @param votationId
+	 * @return token
+	 */
 	public static Integer calculateToken(Integer votationId){
 		
 		Integer token = 0;
@@ -34,6 +39,10 @@ public class Token {
 		
 	}
 
+	/**
+	 * Checks the votation id is lower than a 10 cipher number.
+	 * @param votationId. 
+	 */
 	private static void checkId(Integer votationId) {
 		assert votationId <= 999999998;
 		
