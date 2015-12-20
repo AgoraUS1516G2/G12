@@ -8,14 +8,14 @@ import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 public class Test {
  
-	public static List<Resultado> naturalCountingAlgorithmTestVotation() throws Exception {
+	public static List<Resultado> referendumAlgorithmTestVotation() throws Exception {
 		
 		Integer token;
 		AuthorityImpl auth;
 		List<Resultado> result;
-		List<byte[]> cryptedVotes;
+		List<byte[]> encryptedVotes;
 		
-		cryptedVotes = new ArrayList<byte[]>();
+		encryptedVotes = new ArrayList<byte[]>();
 		result= new ArrayList<Resultado>();
 		auth = new AuthorityImpl();
 		token = Token.calculateToken(2);
@@ -33,18 +33,19 @@ public class Test {
 				+ "],\"id\": 1,\"autonomous_community\": \"Andalucia\",\"genre\": \"Masculino\",\"id_poll\": 32778}";
         
         
-        byte[] cryptedVote1 = auth.encrypt("2", vote1, token);
-        byte[] cryptedVote2 = auth.encrypt("2", vote2, token);
-        byte[] cryptedVote3 = auth.encrypt("2", vote3, token);
-        byte[] cryptedVote4 = auth.encrypt("2", vote4, token);
+
+        byte[] encryptedVote1 = auth.encrypt("1", vote1, token);
+        byte[] encryptedVote2 = auth.encrypt("1", vote2, token);
+        byte[] encryptedVote3 = auth.encrypt("1", vote3, token);
+        byte[] encryptedVote4 = auth.encrypt("1", vote4, token);
         
-        cryptedVotes.add(cryptedVote1);
-        cryptedVotes.add(cryptedVote2);
-        cryptedVotes.add(cryptedVote3);
-        cryptedVotes.add(cryptedVote4);
+        encryptedVotes.add(encryptedVote1);
+        encryptedVotes.add(encryptedVote2);
+        encryptedVotes.add(encryptedVote3);
+        encryptedVotes.add(encryptedVote4);
         
-        result = Algoritmo.naturalCountingAlgorithm("2", cryptedVotes);
-        
+        result = Algoritmo.naturalCountingAlgorithm("1", encryptedVotes);
+
         return result;
 	
 	}

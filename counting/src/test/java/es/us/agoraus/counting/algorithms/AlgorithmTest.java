@@ -10,7 +10,7 @@ import es.us.agoraus.counting.domain.Resultado;
 public class AlgorithmTest {
 
 	@Test
-	public void testNaturalCount() throws Exception {
+	public void testReferendumCount() throws Exception {
 		List<Resultado> resultados;
 
 		// Some votes are initialized and added into a votes list
@@ -30,7 +30,8 @@ public class AlgorithmTest {
 		List<byte[]> votesByte = new ArrayList<byte[]>();
 		votesByte = Transformations.transformByteArrayStringToByteArray(votes);
 
-		resultados = Algoritmo.naturalCountingAlgorithm("1", votesByte);
+		final CountingAlgorithm algorithm = new ReferendumAlgorithm();
+		resultados = algorithm.count("1", votesByte);
 
 		assert resultados != null;
 
@@ -47,7 +48,7 @@ public class AlgorithmTest {
 
 		List<Resultado> resultados;
 
-		resultados = es.us.agoraus.counting.algorithms.Test.naturalCountingAlgorithmTestVotation();
+		resultados = es.us.agoraus.counting.algorithms.Test.referendumAlgorithmTestVotation();
 
 		assert !resultados.isEmpty();
 
@@ -60,7 +61,7 @@ public class AlgorithmTest {
 
 		List<Resultado> resultados;
 
-		resultados = es.us.agoraus.counting.algorithms.Test.naturalCountingAlgorithmTestVotation();
+		resultados = es.us.agoraus.counting.algorithms.Test.referendumAlgorithmTestVotation();
 
 		assert !resultados.isEmpty();
 
@@ -73,7 +74,7 @@ public class AlgorithmTest {
 
 		List<Resultado> resultados;
 
-		resultados = es.us.agoraus.counting.algorithms.Test.naturalCountingAlgorithmTestVotation();
+		resultados = es.us.agoraus.counting.algorithms.Test.referendumAlgorithmTestVotation();
 
 		assert !resultados.isEmpty();
 
@@ -86,7 +87,7 @@ public class AlgorithmTest {
 
 		List<Resultado> resultados;
 
-		resultados = es.us.agoraus.counting.algorithms.Test.naturalCountingAlgorithmTestVotation();
+		resultados = es.us.agoraus.counting.algorithms.Test.referendumAlgorithmTestVotation();
 
 		assert !resultados.isEmpty();
 
