@@ -36,5 +36,14 @@
 		*/count/2?segment=aut_com --> para segmentar el recuento por com.
 		autónoma.
 	</p>
+
+	<p>
+		Para visualizar los resultados de una votación por segmento, invocar
+		las siguientes rutas: <br> */count/2/charts?segment=age -->
+		para segmentar el recuento por edad.<br> */count/2/charts?segment=gender
+		--> para segmentar el recuento por género.<br>
+		*/count/2/charts?segment=aut_com --> para segmentar el recuento por com.
+		autónoma.
+	</p>
 </body>
 </html>
