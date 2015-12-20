@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.us.agoraus.counting.algorithms.CountingAlgorithm;
 import es.us.agoraus.counting.algorithms.ReferendumAlgorithm;
+import es.us.agoraus.counting.algorithms.SegmentationAlgorithm;
+import es.us.agoraus.counting.algorithms.SegmentationCriteria;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
-import es.us.agoraus.counting.domain.Resultado;
+import es.us.agoraus.counting.domain.Result;
 import es.us.agoraus.counting.domain.VotosCifrados;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
@@ -31,10 +33,10 @@ public class ApiTestController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/predefined")
-	public List<Resultado> predefinedCounting()
+	public List<Result> predefinedCounting()
 			throws Exception {
 
-		List <Resultado> resultados = Test.referendumAlgorithmTestVotation();
+		List <Result> resultados = Test.referendumAlgorithmTestVotation();
 		
 		return resultados;
 
@@ -53,7 +55,7 @@ public class ApiTestController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/referendum")
-	public List<Resultado> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification)
+	public List<Result> referendum(@RequestParam(value = "pollId", required = true) String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment)
 			throws Exception {
 		
 		VotosCifrados votes;
@@ -67,8 +69,13 @@ public class ApiTestController {
 			byteVotes = Transformations.transformByteArrayStringToByteArray(votes.getVotes());
 		}
 		
-		final CountingAlgorithm algorithm = new ReferendumAlgorithm();
-		final List<Resultado> resultados = algorithm.count(pollId, byteVotes);
+		CountingAlgorithm algorithm = new ReferendumAlgorithm();
+		
+		if (segment != null) {
+			algorithm = new SegmentationAlgorithm(segment);
+		}
+		
+		final List<Result> resultados = algorithm.count(pollId, byteVotes);
 		
 		return resultados;
 
