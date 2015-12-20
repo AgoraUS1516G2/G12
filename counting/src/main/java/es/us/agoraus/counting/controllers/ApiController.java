@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import es.us.agoraus.counting.algorithms.CountingAlgorithm;
 import es.us.agoraus.counting.algorithms.ReferendumAlgorithm;
@@ -80,6 +81,15 @@ public class ApiController {
 		
 		return resultados;
 
+	}
+	
+	@RequestMapping("/{pollId}/charts")
+	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
+		final List<Result> result = referendum(pollId, codification, segment);
+		ModelAndView model = new ModelAndView("charts");
+		model.addObject("data", result);
+		model.addObject("criteria", segment);
+		return model;
 	}
 
 }
