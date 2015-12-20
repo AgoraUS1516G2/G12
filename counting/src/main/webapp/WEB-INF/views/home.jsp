@@ -23,7 +23,7 @@
 
 	<p>
 		Se puede añadir el parámetro "cod", dependiendo de la codificación de
-		los votos.<br> */count/2?cod=special --> si se esperan recibir
+		los votos.<br> */count/1?cod=special --> si se esperan recibir
 		los votos como array de bytes. <br> */count/2 o
 		*/count/2?cod=normal --> si se esperan recibir los votos como un hash
 		cadena cifrado.
