@@ -1,5 +1,5 @@
 package es.us.agoraus.counting.domain;
-
+//Comentario prueba jenkins
 public class Answer {
 
 	private String question;
