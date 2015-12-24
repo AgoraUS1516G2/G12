@@ -28,7 +28,11 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		result = new ArrayList<Vote>();
 
 		for (byte[] s : votesArr) {
-			if (auth.checkVote(s, pollId, token)) {
+			// The following sentence is commented due to problems with
+			// Verification subsystem server. Commenting this line increases
+			// algorithms performance by 1/2.
+			//if (auth.checkVote(s, pollId, token)) {
+			if (true) {
 				String res = null;
 				try {
 					res = auth.decrypt(pollId, s, token);
