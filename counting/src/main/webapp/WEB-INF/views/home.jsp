@@ -8,7 +8,7 @@
 	<h1>Subsistema "Recuento y Modificación de Resultados"</h1>
 
 	<P>
-		${serverTime} </br> Subsistema encargado de la realización del recuento y
+		Subsistema encargado de la realización del recuento y
 		la modificación de los resultados de una votación determinada. Para la
 		realización del recuento se accederá a la base de datos proporcionada
 		por almacenamiento y utilizará los métodos proporcionados por
