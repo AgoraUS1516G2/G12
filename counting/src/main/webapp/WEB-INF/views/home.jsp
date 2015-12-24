@@ -14,8 +14,43 @@
 		por almacenamiento y utilizará los métodos proporcionados por
 		verificación para descifrar los votos obtenidos.
 	</P>
-
-	API REST del subsistema:
+	
+	<h4>Importante: los tiempos de respuestas pueden ser bastante amplios.<br>
+	No es responsabilidad del subsistema de recuento ni de ningún miembro relacionado
+	con el subsistema.<br>
+	Se trata de un problema sobre el lugar donde esta desplegado el subsistema de
+	Verificacion el cual debe ser consultado para el descifrado. <br>
+	Aun asi, disculpen las molestias causadas.</h4>
+	
+	
+	<h4>Listado de votaciones existentes:</h4>
+	
+	<h5>Mostrado sin visualización</h5>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1?cod=special">Votación</a><br>
+	
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2">Votación</a><br>
+	
+	<h5>Mostrado con visualización</h5>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	
+	<h5>Mostrado segmentado</h5>
+	Por edad<br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	
+	Por género<br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	Por comunidad autonoma<br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	
+	<h4>API REST del subsistema:</h4>
 
 	<p>*/count/predefined --> Test de funcionamiento de una votación.</p>
 
