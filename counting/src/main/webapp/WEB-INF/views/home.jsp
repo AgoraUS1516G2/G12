@@ -37,18 +37,18 @@
 	
 	<h5>Mostrado segmentado</h5>
 	Por edad<br>
-	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special&segment=age">Votación</a><br>
 	
-	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts?segment=age">Votación</a><br>
 	
 	Por género<br>
-	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special&segment=gender">Votación</a><br>
 	
-	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts?segment=gender">Votación</a><br>
 	Por comunidad autonoma<br>
-	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special">Votación</a><br>
+	Votación 1: <a href="https://recuento.herokuapp.com/count/1/charts?cod=special&segment=aut_com">Votación</a><br>
 	
-	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts">Votación</a><br>
+	Votación 2:<a href="https://recuento.herokuapp.com/count/2/charts?segment=aut_com">Votación</a><br>
 	
 	<h4>API REST del subsistema:</h4>
 
