@@ -85,13 +85,13 @@ public class ApiController {
 	
 	@RequestMapping("/{pollId}/charts")
 	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
-		if (segment == null) {
-			segment = SegmentationCriteria.age;
+		final ModelAndView model = new ModelAndView("non-segmented-charts");
+		if (segment != null) {
+			model.addObject("criteria", segment);
+			model.setViewName("segmented-charts");
 		}
 		final List<Result> result = referendum(pollId, codification, segment);
-		ModelAndView model = new ModelAndView("charts");
 		model.addObject("data", result);
-		model.addObject("criteria", segment);
 		return model;
 	}
 
