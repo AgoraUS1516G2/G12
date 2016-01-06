@@ -39,7 +39,7 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 					final Result r = questionsKeys.get(question);
 					partialRes = ((SegmentedResult) r).getSegments().get(segment);
 					if (partialRes == null) {
-						partialRes = ((SegmentedResult) result).addSegment(segment);
+						partialRes = ((SegmentedResult) r).addSegment(segment);
 					}
 					incrementCount(answer, partialRes);
 				}
