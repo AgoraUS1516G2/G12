@@ -58,7 +58,7 @@ public class ApiController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/{pollId}")
-	public List<Result> referendum(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
+	public List<Result> referendum(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) {
 		
 		EncryptedVotes votes;
 		List<byte[]> byteVotes;
@@ -84,7 +84,7 @@ public class ApiController {
 	}
 	
 	@RequestMapping("/{pollId}/charts")
-	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) throws Exception {
+	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) {
 		final ModelAndView model = new ModelAndView("non-segmented-charts");
 		if (segment != null) {
 			model.addObject("criteria", segment);
