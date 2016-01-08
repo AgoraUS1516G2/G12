@@ -19,9 +19,9 @@
 	<h4>Importante: los tiempos de respuestas pueden ser bastante amplios.<br>
 	No es responsabilidad del subsistema de recuento ni de ningún miembro relacionado
 	con el subsistema.<br>
-	Se trata de un problema sobre el lugar donde esta desplegado el subsistema de
-	Verificacion el cual debe ser consultado para el descifrado. <br>
-	Aun asi, disculpen las molestias causadas.</h4>
+	Se trata de un problema sobre el lugar donde está desplegado el subsistema de
+	Verificación, el cual debe ser consultado para el descifrado. <br>
+	Aún así, disculpen las molestias causadas.</h4>
 	
 	
 	<h4>Listado de votaciones existentes:</h4>
