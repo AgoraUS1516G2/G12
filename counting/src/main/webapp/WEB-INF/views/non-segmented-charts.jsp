@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <title>Charts</title>
 <script type="text/javascript"
@@ -33,7 +34,7 @@
 <body>
 
 	<c:forEach var="question" items="${data}" varStatus="loopCounter">
-			<div id="piechart${loopCounter.count}" style="width: 900px; height: 500px;"></div>
+			<div id="piechart${loopCounter.count}" style="width: 700px; height: 300px;"></div>
 	</c:forEach>
 
 </body>
