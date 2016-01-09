@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import es.us.agoraus.counting.algorithms.AlgorithmFactory;
 import es.us.agoraus.counting.algorithms.CountingAlgorithm;
-import es.us.agoraus.counting.algorithms.ReferendumAlgorithm;
-import es.us.agoraus.counting.algorithms.SegmentationAlgorithm;
 import es.us.agoraus.counting.algorithms.SegmentationCriteria;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
@@ -57,20 +56,10 @@ public class ApiController {
 	public List<Result> referendum(@PathVariable String pollId,
 			@RequestParam(value = "cod", required = false) String codification,
 			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
-
-		EncryptedVotes votes;
-		List<byte[]> byteVotes;
-		votes = storageService.getVotesForPoll(pollId);
-		if ((codification == null) || (codification == "normal")) {
-			byteVotes = Transformations.transformStringToByteArray(votes.getVotes());
-		} else {
-			byteVotes = Transformations.transformByteArrayStringToByteArray(votes.getVotes());
-		}
-		CountingAlgorithm algorithm = new ReferendumAlgorithm();
-		if (segment != null) {
-			algorithm = new SegmentationAlgorithm(segment);
-		}
-		final List<Result> result = algorithm.count(pollId, byteVotes);
+		EncryptedVotes votes = storageService.getVotesForPoll(pollId);
+		List<byte[]> byteVotes = Transformations.forCodification(codification, votes.getVotes());
+		CountingAlgorithm algorithm = AlgorithmFactory.forCriteria(segment);
+		List<Result> result = algorithm.count(pollId, byteVotes);
 		return result;
 	}
 
