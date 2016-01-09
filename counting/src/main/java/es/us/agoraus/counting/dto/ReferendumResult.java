@@ -5,8 +5,11 @@ public class ReferendumResult implements AlgorithmResult, YesNoSettable {
 	int yes;
 	int no;
 
+	public ReferendumResult(String question) {
+		this.question = question;
+	}
+	
 	public ReferendumResult(String question, int yes, int no) {
-		super();
 		this.question = question;
 		this.yes = yes;
 		this.no = no;

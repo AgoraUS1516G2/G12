@@ -26,7 +26,7 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 		PartialSegmentResult partialRes;
 		for (Vote v : votes) {
 			for (Answer a : v.getAnswers()) {
-				final String answer = a.getAnwser();
+				final String answer = a.getAnswer();
 				final String question = a.getQuestion();
 				final String segment = getSegment(v);
 				if (!questionsKeys.keySet().contains(question)) {

@@ -17,6 +17,9 @@ import main.java.AuthorityImpl;
 public abstract class BaseAlgorithm implements CountingAlgorithm {
 
 	private static final Logger LOG = Logger.getLogger(BaseAlgorithm.class.getCanonicalName());
+	
+	protected static final String YES_ANSWER = "SI";
+	protected static final String NO_ANSWER = "NO";
 
 	public List<Vote> decryptVotes(final String pollId, final List<byte[]> votesArr) {
 		Integer token;
@@ -58,9 +61,9 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 	}
 
 	protected void incrementCount(final String answer, final YesNoSettable result) {
-		if ("SI".equals(answer)) {
+		if (YES_ANSWER.equals(answer)) {
 			result.setYes(result.getYes() + 1);
-		} else if (("NO".equals(answer))) {
+		} else if ((NO_ANSWER.equals(answer))) {
 			result.setNo(result.getNo() + 1);
 		}
 	}
