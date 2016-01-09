@@ -51,13 +51,27 @@
 		<tbody>
 			<tr>
 				<td>Votación 1</td>
-				<td><a
-					href="https://recuento.herokuapp.com/count/1?cod=special">Ver</a></td>
+				<td><a href="https://recuento.herokuapp.com/count/1?cod=special">Ver</a></td>
 			</tr>
 
 			<tr>
 				<td>Votación 2</td>
 				<td><a href="https://recuento.herokuapp.com/count/2">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 3</td>
+				<td><a href="https://recuento.herokuapp.com/count/3">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 4</td>
+				<td><a href="https://recuento.herokuapp.com/count/4">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 5</td>
+				<td><a href="https://recuento.herokuapp.com/count/5">Ver</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -81,6 +95,21 @@
 			<tr>
 				<td>Votación 2</td>
 				<td><a href="https://recuento.herokuapp.com/count/2/charts">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 3</td>
+				<td><a href="https://recuento.herokuapp.com/count/3/charts">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 4</td>
+				<td><a href="https://recuento.herokuapp.com/count/4/charts">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 5</td>
+				<td><a href="https://recuento.herokuapp.com/count/5/charts">Ver</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -108,8 +137,22 @@
 
 			<tr>
 				<td>Votación 2</td>
-				<td><a
-					href="https://recuento.herokuapp.com/count/2/charts?segment=age">Ver</a></td>
+				<td><a href="https://recuento.herokuapp.com/count/2/charts?segment=age">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 3</td>
+				<td><a href="https://recuento.herokuapp.com/count/3/charts?segment=age">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 4</td>
+				<td><a href="https://recuento.herokuapp.com/count/4/charts?segment=age">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 5</td>
+				<td><a href="https://recuento.herokuapp.com/count/5/charts?segment=age">Ver</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -138,6 +181,24 @@
 				<td>Votación 2</td>
 				<td><a
 					href="https://recuento.herokuapp.com/count/2/charts?segment=gender">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 3</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/3/charts?segment=gender">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 4</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/4/charts?segment=gender">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 5</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/5/charts?segment=gender">Ver</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -168,6 +229,24 @@
 				<td>Votación 2</td>
 				<td><a
 					href="https://recuento.herokuapp.com/count/2/charts?segment=aut_com">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 3</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/3/charts?segment=aut_com">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 4</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/4/charts?segment=aut_com">Ver</a></td>
+			</tr>
+			
+			<tr>
+				<td>Votación 5</td>
+				<td><a
+					href="https://recuento.herokuapp.com/count/5/charts?segment=aut_com">Ver</a></td>
 			</tr>
 		</tbody>
 	</table>
