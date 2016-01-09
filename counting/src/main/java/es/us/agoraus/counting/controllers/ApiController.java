@@ -16,6 +16,7 @@ import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
 import es.us.agoraus.counting.domain.EncryptedVotes;
 import es.us.agoraus.counting.domain.Result;
+import es.us.agoraus.counting.exceptions.InvalidCodificationException;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
@@ -56,10 +57,17 @@ public class ApiController {
 	public List<Result> referendum(@PathVariable String pollId,
 			@RequestParam(value = "cod", required = false) String codification,
 			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
+		List<Result> result;
 		EncryptedVotes votes = storageService.getVotesForPoll(pollId);
 		List<byte[]> byteVotes = Transformations.forCodification(codification, votes.getVotes());
 		CountingAlgorithm algorithm = AlgorithmFactory.forCriteria(segment);
-		List<Result> result = algorithm.count(pollId, byteVotes);
+		try {
+			result = algorithm.count(pollId, byteVotes);
+		} catch (InvalidCodificationException oops) {
+			// special codification fallback
+			byteVotes = Transformations.specialCodification(votes.getVotes());
+			result = algorithm.count(pollId, byteVotes);
+		}
 		return result;
 	}
 

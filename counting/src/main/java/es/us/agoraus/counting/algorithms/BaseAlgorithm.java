@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import es.us.agoraus.counting.domain.Result;
 import es.us.agoraus.counting.domain.Vote;
 import es.us.agoraus.counting.domain.YesNoSettable;
+import es.us.agoraus.counting.exceptions.InvalidCodificationException;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 
@@ -32,7 +33,7 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 			// The following sentence is commented due to problems with
 			// Verification subsystem server. Commenting this line increases
 			// algorithms performance by 1/2.
-			//if (auth.checkVote(s, pollId, token)) {
+			// if (auth.checkVote(s, pollId, token)) {
 			if (true) {
 				String res = null;
 				try {
@@ -42,6 +43,9 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 				}
 				Gson gson = new Gson();
 				Vote vot = gson.fromJson(res, Vote.class);
+				if (vot == null) {
+					throw new InvalidCodificationException();
+				}
 				result.add(vot);
 			}
 		}
@@ -52,7 +56,7 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		final List<Vote> votes = decryptVotes(pollId, votesArr);
 		return countingLogic(votes);
 	}
-	
+
 	protected void incrementCount(final String answer, final YesNoSettable result) {
 		if ("SI".equals(answer)) {
 			result.setYes(result.getYes() + 1);
@@ -60,7 +64,7 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 			result.setNo(result.getNo() + 1);
 		}
 	}
-	
+
 	protected abstract List<Result> countingLogic(final List<Vote> votes);
 
 }

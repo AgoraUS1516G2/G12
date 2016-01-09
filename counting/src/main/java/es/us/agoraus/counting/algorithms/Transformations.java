@@ -9,6 +9,9 @@ import main.java.AuthorityImpl;
 
 public class Transformations {
 
+	public static final String NORMAL_COD = "normal";
+	public static final String SPECIAL_COD = "special";
+	
 	/**
 	 * The next method is used to transform a Byte Array inside a String into a
 	 * real Byte Array. This is needed due to the way we obtain the votes in
@@ -149,11 +152,15 @@ public class Transformations {
 
 	public static List<byte[]> forCodification(final String codification, final List<String> votes) {
 		List<byte[]> result;
-		if ((codification == null) || (codification == "normal")) {
+		if ((codification == null) || (codification == NORMAL_COD)) {
 			result = Transformations.transformStringToByteArray(votes);
 		} else {
 			result = Transformations.transformByteArrayStringToByteArray(votes);
 		}
 		return result;
+	}
+	
+	public static List<byte[]> specialCodification(final List<String> votes) {
+		return forCodification(SPECIAL_COD, votes);
 	}
 }
