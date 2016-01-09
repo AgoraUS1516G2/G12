@@ -19,6 +19,11 @@ public class BaseController {
 		return result;
 	}
 
+	protected static ApiResponse response(Status status) {
+		ApiResponse result = new ApiResponse(status);
+		return result;
+	}
+
 	protected static AlgorithmDetails algorithmDetails(String codification, SegmentationCriteria segment,
 			List<AlgorithmResult> algorithmResult) {
 		AlgorithmDetails result = new AlgorithmDetails();

@@ -63,6 +63,9 @@ public class ApiController extends BaseController {
 		Status status = Status.SUCCESS;
 		List<AlgorithmResult> algorithmResult;
 		EncryptedVotes votes = storageService.getVotesForPoll(pollId);
+		if (votes.getVotes().isEmpty()) {
+			return response(Status.EMPTY_VOTES);
+		}
 		List<byte[]> byteVotes = Transformations.forCodification(codification, votes.getVotes());
 		CountingAlgorithm algorithm = AlgorithmFactory.forCriteria(segment);
 		try {
@@ -73,9 +76,6 @@ public class ApiController extends BaseController {
 			algorithmResult = algorithm.count(pollId, byteVotes);
 			status = Status.SPECIAL_COD_FALLBACK;
 			codification = Transformations.SPECIAL_COD;
-		}
-		if (algorithmResult.isEmpty()) {
-			status = Status.EMPTY_VOTES;
 		}
 		return response(codification, segment, algorithmResult, status);
 	}

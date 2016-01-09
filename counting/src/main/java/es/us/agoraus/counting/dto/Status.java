@@ -4,7 +4,7 @@ public enum Status {
 
 	SUCCESS(Code.gen(1), "OK."),
 	SPECIAL_COD_FALLBACK(Code.gen(2), "Special codification fallback."),
-	EMPTY_VOTES(Code.gen(3), "The poll has no votes."),
+	EMPTY_VOTES(Code.gen(3), "The poll doesn't exist or it has no votes."),
 	INTERNAL_ERROR(Code.gen(4), "Oops. Something went wrong.");
 	
 	private final int code;
