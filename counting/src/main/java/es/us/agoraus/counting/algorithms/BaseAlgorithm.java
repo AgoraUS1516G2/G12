@@ -41,11 +41,11 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 				} catch (Throwable oops) {
 					LOG.log(Level.SEVERE, "Error decrypting the votes.");
 				}
-				Gson gson = new Gson();
-				Vote vot = gson.fromJson(res, Vote.class);
-				if (vot == null) {
+				if (res == null) {
 					throw new InvalidCodificationException();
 				}
+				Gson gson = new Gson();
+				Vote vot = gson.fromJson(res, Vote.class);
 				result.add(vot);
 			}
 		}
