@@ -1,5 +1,7 @@
 package es.us.agoraus.counting.domain;
 
-public interface Result {
-
-}
+/**
+ * Marker interface representing the result of a counting algorithm.
+ *
+ */
+public interface Result {}

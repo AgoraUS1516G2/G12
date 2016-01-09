@@ -2,14 +2,18 @@ package es.us.agoraus.counting.domain;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Vote {
 
 	private String age;
 	private List<Answer> answers;
-	private String autonomous_community;
+	@SerializedName("autonomous_community")
+	private String autonomousCommunity;
 	private String genre;
 	private String id;
-	private String id_poll;
+	@SerializedName("id_poll")
+	private String pollId;
 
 	public String getAge() {
 		return age;
@@ -27,12 +31,12 @@ public class Vote {
 		this.answers = answers;
 	}
 
-	public String getAutonomous_community() {
-		return autonomous_community;
+	public String getAutonomousCommunity() {
+		return autonomousCommunity;
 	}
 
-	public void setAutonomous_community(String autonomous_community) {
-		this.autonomous_community = autonomous_community;
+	public void setAutonomousCommunity(String autonomousCommunity) {
+		this.autonomousCommunity = autonomousCommunity;
 	}
 
 	public String getGenre() {
@@ -51,19 +55,18 @@ public class Vote {
 		this.id = id;
 	}
 
-	public String getId_poll() {
-		return id_poll;
+	public String getPollId() {
+		return pollId;
 	}
 
-	public void setId_poll(String id_poll) {
-		this.id_poll = id_poll;
+	public void setPollId(String pollId) {
+		this.pollId = pollId;
 	}
 
 	@Override
 	public String toString() {
-		return "Voto [age=" + age + ", answers=" + answers
-				+ ", autonomous_community=" + autonomous_community + ", genre="
-				+ genre + ", id=" + id + ", id_poll=" + id_poll + "]";
+		return "Voto [age=" + age + ", answers=" + answers + ", autonomous_community=" + autonomousCommunity
+				+ ", genre=" + genre + ", id=" + id + ", id_poll=" + pollId + "]";
 	}
 
 }

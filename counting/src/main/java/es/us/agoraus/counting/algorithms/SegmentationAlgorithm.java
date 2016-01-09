@@ -26,7 +26,7 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 		PartialSegmentResult partialRes;
 		for (Vote v : votes) {
 			for (Answer a : v.getAnswers()) {
-				final String answer = a.getAnswer_question();
+				final String answer = a.getAnwser();
 				final String question = a.getQuestion();
 				final String segment = getSegment(v);
 				if (!questionsKeys.keySet().contains(question)) {
@@ -74,7 +74,7 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 			result = vote.getGenre();
 			break;
 		case aut_com:
-			result = vote.getAutonomous_community();
+			result = vote.getAutonomousCommunity();
 		}
 		return result;
 	}
