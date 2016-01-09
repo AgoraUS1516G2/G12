@@ -60,9 +60,6 @@ public class ApiController extends BaseController {
 	public ApiResponse referendum(@PathVariable String pollId,
 			@RequestParam(value = "cod", required = false) String codification,
 			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
-		if (true) {
-			throw new IndexOutOfBoundsException();
-		}
 		Status status = Status.SUCCESS;
 		List<AlgorithmResult> algorithmResult;
 		EncryptedVotes votes = storageService.getVotesForPoll(pollId);
