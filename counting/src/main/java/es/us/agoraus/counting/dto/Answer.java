@@ -1,4 +1,4 @@
-package es.us.agoraus.counting.domain;
+package es.us.agoraus.counting.dto;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package es.us.agoraus.counting.domain;
+package es.us.agoraus.counting.dto;
 
 /**
  * Marker interface representing the result of a counting algorithm.

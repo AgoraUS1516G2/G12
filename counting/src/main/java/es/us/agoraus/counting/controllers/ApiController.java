@@ -14,8 +14,8 @@ import es.us.agoraus.counting.algorithms.CountingAlgorithm;
 import es.us.agoraus.counting.algorithms.SegmentationCriteria;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
-import es.us.agoraus.counting.domain.EncryptedVotes;
-import es.us.agoraus.counting.domain.Result;
+import es.us.agoraus.counting.dto.EncryptedVotes;
+import es.us.agoraus.counting.dto.Result;
 import es.us.agoraus.counting.exceptions.InvalidCodificationException;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 

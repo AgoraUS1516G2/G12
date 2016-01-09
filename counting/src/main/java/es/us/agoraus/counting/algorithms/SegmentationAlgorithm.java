@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.us.agoraus.counting.domain.Answer;
-import es.us.agoraus.counting.domain.PartialSegmentResult;
-import es.us.agoraus.counting.domain.Result;
-import es.us.agoraus.counting.domain.SegmentedResult;
-import es.us.agoraus.counting.domain.Vote;
+import es.us.agoraus.counting.dto.Answer;
+import es.us.agoraus.counting.dto.PartialSegmentResult;
+import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.SegmentedResult;
+import es.us.agoraus.counting.dto.Vote;
 
 public class SegmentationAlgorithm extends BaseAlgorithm {
 

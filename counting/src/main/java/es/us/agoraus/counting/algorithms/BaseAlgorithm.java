@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import com.google.gson.Gson;
 
-import es.us.agoraus.counting.domain.Result;
-import es.us.agoraus.counting.domain.Vote;
-import es.us.agoraus.counting.domain.YesNoSettable;
+import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.Vote;
+import es.us.agoraus.counting.dto.YesNoSettable;
 import es.us.agoraus.counting.exceptions.InvalidCodificationException;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;

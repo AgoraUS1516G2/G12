@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import es.us.agoraus.counting.domain.Answer;
-import es.us.agoraus.counting.domain.ReferendumResult;
-import es.us.agoraus.counting.domain.Result;
-import es.us.agoraus.counting.domain.Vote;
+import es.us.agoraus.counting.dto.Answer;
+import es.us.agoraus.counting.dto.ReferendumResult;
+import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.Vote;
 
 public class ReferendumAlgorithm extends BaseAlgorithm {
 

@@ -3,7 +3,7 @@ package es.us.agoraus.counting.integration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import es.us.agoraus.counting.domain.EncryptedVotes;
+import es.us.agoraus.counting.dto.EncryptedVotes;
 import retrofit.Call;
 
 @Component

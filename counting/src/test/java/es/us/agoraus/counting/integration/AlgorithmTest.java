@@ -8,8 +8,9 @@ import org.junit.Test;
 import es.us.agoraus.counting.algorithms.CountingAlgorithm;
 import es.us.agoraus.counting.algorithms.ReferendumAlgorithm;
 import es.us.agoraus.counting.algorithms.Transformations;
-import es.us.agoraus.counting.domain.ReferendumResult;
-import es.us.agoraus.counting.domain.Result;
+import es.us.agoraus.counting.dto.ReferendumResult;
+import es.us.agoraus.counting.dto.Result;
+
 import org.junit.Assert;
 
 public class AlgorithmTest {

@@ -3,7 +3,7 @@ package es.us.agoraus.counting.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.us.agoraus.counting.domain.Result;
+import es.us.agoraus.counting.dto.Result;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 public class Test {
