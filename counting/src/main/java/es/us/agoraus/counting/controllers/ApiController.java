@@ -14,14 +14,17 @@ import es.us.agoraus.counting.algorithms.CountingAlgorithm;
 import es.us.agoraus.counting.algorithms.SegmentationCriteria;
 import es.us.agoraus.counting.algorithms.Test;
 import es.us.agoraus.counting.algorithms.Transformations;
+import es.us.agoraus.counting.dto.AlgorithmDetails;
+import es.us.agoraus.counting.dto.AlgorithmResult;
+import es.us.agoraus.counting.dto.ApiResponse;
 import es.us.agoraus.counting.dto.EncryptedVotes;
-import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.Status;
 import es.us.agoraus.counting.exceptions.InvalidCodificationException;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
 @RequestMapping(value = "/count")
-public class ApiController {
+public class ApiController extends BaseController {
 
 	@Autowired
 	StorageServiceImpl storageService;
@@ -35,8 +38,8 @@ public class ApiController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/predefined")
-	public List<Result> predefinedCounting() throws Exception {
-		List<Result> result = Test.referendumAlgorithmTestVotation();
+	public List<AlgorithmResult> predefinedCounting() throws Exception {
+		List<AlgorithmResult> result = Test.referendumAlgorithmTestVotation();
 		return result;
 	}
 
@@ -54,21 +57,27 @@ public class ApiController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/{pollId}")
-	public List<Result> referendum(@PathVariable String pollId,
+	public ApiResponse referendum(@PathVariable String pollId,
 			@RequestParam(value = "cod", required = false) String codification,
 			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
-		List<Result> result;
+		Status status = Status.SUCCESS;
+		List<AlgorithmResult> algorithmResult;
 		EncryptedVotes votes = storageService.getVotesForPoll(pollId);
 		List<byte[]> byteVotes = Transformations.forCodification(codification, votes.getVotes());
 		CountingAlgorithm algorithm = AlgorithmFactory.forCriteria(segment);
 		try {
-			result = algorithm.count(pollId, byteVotes);
+			algorithmResult = algorithm.count(pollId, byteVotes);
 		} catch (InvalidCodificationException oops) {
 			// special codification fallback
 			byteVotes = Transformations.specialCodification(votes.getVotes());
-			result = algorithm.count(pollId, byteVotes);
+			algorithmResult = algorithm.count(pollId, byteVotes);
+			status = Status.SPECIAL_COD_FALLBACK;
+			codification = Transformations.SPECIAL_COD;
 		}
-		return result;
+		if (algorithmResult.isEmpty()) {
+			status = Status.EMPTY_VOTES;
+		}
+		return response(codification, segment, algorithmResult, status);
 	}
 
 	@RequestMapping("/{pollId}/charts")
@@ -80,8 +89,8 @@ public class ApiController {
 			model.addObject("criteria", segment);
 			model.setViewName("segmented-charts");
 		}
-		final List<Result> result = referendum(pollId, codification, segment);
-		model.addObject("data", result);
+		final AlgorithmDetails result = referendum(pollId, codification, segment).getAlgorithm();
+		model.addObject("data", result.getResult());
 		return model;
 	}
 

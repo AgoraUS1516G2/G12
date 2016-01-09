@@ -7,14 +7,14 @@ import java.util.Set;
 
 import es.us.agoraus.counting.dto.Answer;
 import es.us.agoraus.counting.dto.ReferendumResult;
-import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.AlgorithmResult;
 import es.us.agoraus.counting.dto.Vote;
 
 public class ReferendumAlgorithm extends BaseAlgorithm {
 
 	@Override
-	protected List<Result> countingLogic(final List<Vote> votes) {
-		final List<Result> results = new ArrayList<Result>();
+	protected List<AlgorithmResult> countingLogic(final List<Vote> votes) {
+		final List<AlgorithmResult> results = new ArrayList<AlgorithmResult>();
 		final Set<String> keys = new HashSet<String>();
 		for (Vote v : votes) {
 			for (Answer a : v.getAnswers()) {
@@ -25,7 +25,7 @@ public class ReferendumAlgorithm extends BaseAlgorithm {
 			results.add(new ReferendumResult(k, 0, 0));
 		}
 		for (Vote v : votes) {
-			for (Result r : results) {
+			for (AlgorithmResult r : results) {
 				ReferendumResult refRes = (ReferendumResult) r;
 				for (Answer a : v.getAnswers()) {
 					if (a.getQuestion().equals(refRes.getQuestion())) {

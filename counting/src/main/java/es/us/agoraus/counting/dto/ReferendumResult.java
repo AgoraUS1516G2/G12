@@ -1,6 +1,6 @@
 package es.us.agoraus.counting.dto;
 
-public class ReferendumResult implements Result, YesNoSettable {
+public class ReferendumResult implements AlgorithmResult, YesNoSettable {
 	String question;
 	int yes;
 	int no;

@@ -3,24 +3,24 @@ package es.us.agoraus.counting.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.AlgorithmResult;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 public class Test {
  
-	public static List<Result> referendumAlgorithmTestVotation() throws Exception {
+	public static List<AlgorithmResult> referendumAlgorithmTestVotation() throws Exception {
 		
 		Integer pollId;
 		String pollIdStr;
 		Integer token;
 		AuthorityImpl auth;
-		List<Result> result;
+		List<AlgorithmResult> result;
 		List<byte[]> encryptedVotes;
 		
 		pollId = 1;
 		pollIdStr = String.valueOf(pollId);
 		encryptedVotes = new ArrayList<byte[]>();
-		result= new ArrayList<Result>();
+		result= new ArrayList<AlgorithmResult>();
 		auth = new AuthorityImpl();
 		token = Token.calculateToken(pollId);
 		

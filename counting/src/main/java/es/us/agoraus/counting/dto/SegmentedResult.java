@@ -3,7 +3,7 @@ package es.us.agoraus.counting.dto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SegmentedResult implements Result {
+public class SegmentedResult implements AlgorithmResult {
 
 	private String question;
 	private Map<String, PartialSegmentResult> segments;

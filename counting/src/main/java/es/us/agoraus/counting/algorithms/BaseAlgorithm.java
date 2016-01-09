@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import com.google.gson.Gson;
 
-import es.us.agoraus.counting.dto.Result;
+import es.us.agoraus.counting.dto.AlgorithmResult;
 import es.us.agoraus.counting.dto.Vote;
 import es.us.agoraus.counting.dto.YesNoSettable;
 import es.us.agoraus.counting.exceptions.InvalidCodificationException;
@@ -52,7 +52,7 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		return result;
 	}
 
-	public List<Result> count(final String pollId, final List<byte[]> votesArr) {
+	public List<AlgorithmResult> count(final String pollId, final List<byte[]> votesArr) {
 		final List<Vote> votes = decryptVotes(pollId, votesArr);
 		return countingLogic(votes);
 	}
@@ -65,6 +65,6 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		}
 	}
 
-	protected abstract List<Result> countingLogic(final List<Vote> votes);
+	protected abstract List<AlgorithmResult> countingLogic(final List<Vote> votes);
 
 }
