@@ -33,6 +33,8 @@
 </head>
 <body>
 
+	<c:if test="${empty data}">No se ha emitido ningún voto todavía.</c:if>
+
 	<c:forEach var="question" items="${data}" varStatus="loopCounter">
 			<div id="piechart${loopCounter.count}" style="width: 700px; height: 300px;"></div>
 	</c:forEach>
