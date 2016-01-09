@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import es.us.agoraus.counting.domain.Result;
 import es.us.agoraus.counting.domain.Vote;
+import es.us.agoraus.counting.domain.YesNoSettable;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 
@@ -50,6 +51,14 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 	public List<Result> count(final String pollId, final List<byte[]> votesArr) {
 		final List<Vote> votes = decryptVotes(pollId, votesArr);
 		return countingLogic(votes);
+	}
+	
+	protected void incrementCount(final String answer, final YesNoSettable result) {
+		if ("SI".equals(answer)) {
+			result.setYes(result.getYes() + 1);
+		} else if (("NO".equals(answer))) {
+			result.setNo(result.getNo() + 1);
+		}
 	}
 	
 	protected abstract List<Result> countingLogic(final List<Vote> votes);

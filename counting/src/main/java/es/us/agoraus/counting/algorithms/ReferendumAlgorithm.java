@@ -29,11 +29,7 @@ public class ReferendumAlgorithm extends BaseAlgorithm {
 				ReferendumResult refRes = (ReferendumResult) r;
 				for (Answer a : v.getAnswers()) {
 					if (a.getQuestion().equals(refRes.getQuestion())) {
-						if (a.getAnwser().equals("SI")) {
-							refRes.setYes(refRes.getYes() + 1);
-						} else if (a.getAnwser().equals("NO")) {
-							refRes.setNo(refRes.getNo() + 1);
-						}
+						incrementCount(a.getAnwser(), refRes);
 					}
 				}
 			}

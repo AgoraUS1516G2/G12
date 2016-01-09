@@ -1,11 +1,11 @@
 package es.us.agoraus.counting.domain;
 
-public class ReferendumResult implements Result {
+public class ReferendumResult implements Result, YesNoSettable {
 	String question;
-	Integer yes;
-	Integer no;
+	int yes;
+	int no;
 
-	public ReferendumResult(String question, Integer yes, Integer no) {
+	public ReferendumResult(String question, int yes, int no) {
 		super();
 		this.question = question;
 		this.yes = yes;
@@ -20,19 +20,19 @@ public class ReferendumResult implements Result {
 		this.question = question;
 	}
 
-	public Integer getYes() {
+	public int getYes() {
 		return yes;
 	}
 
-	public void setYes(Integer yes) {
+	public void setYes(int yes) {
 		this.yes = yes;
 	}
 
-	public Integer getNo() {
+	public int getNo() {
 		return no;
 	}
 
-	public void setNo(Integer no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 

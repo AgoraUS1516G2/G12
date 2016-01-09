@@ -56,14 +56,6 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 		this.criteria = criteria;
 	}
 
-	private void incrementCount(final String answer, final PartialSegmentResult partialRes) {
-		if ("SI".equals(answer)) {
-			partialRes.setYes(partialRes.getYes() + 1);
-		} else if (("NO".equals(answer))) {
-			partialRes.setNo(partialRes.getNo() + 1);
-		}
-	}
-
 	private String getSegment(final Vote vote) {
 		String result = null;
 		switch (criteria) {

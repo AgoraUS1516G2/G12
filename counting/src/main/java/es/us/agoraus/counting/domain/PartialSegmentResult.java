@@ -1,6 +1,6 @@
 package es.us.agoraus.counting.domain;
 
-public class PartialSegmentResult {
+public class PartialSegmentResult implements YesNoSettable {
 
 	private int yes;
 	private int no;
