@@ -13,10 +13,9 @@ public class BaseController {
 
 	protected static ApiResponse response(String codification, SegmentationCriteria segment,
 			List<AlgorithmResult> algorithmResult, Status status) {
-		ApiResponse result = new ApiResponse();
+		ApiResponse result = new ApiResponse(status);
 		AlgorithmDetails algDetails = algorithmDetails(codification, segment, algorithmResult);
 		result.setAlgorithm(algDetails);
-		result.fromStatus(status);
 		return result;
 	}
 

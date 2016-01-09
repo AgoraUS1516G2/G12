@@ -6,7 +6,7 @@ public class ApiResponse {
 	private String message;
 	private AlgorithmDetails algorithm;
 
-	public void fromStatus(Status status) {
+	public ApiResponse(Status status) {
 		this.code = status.getCode();
 		this.message = status.getMessage();
 	}
