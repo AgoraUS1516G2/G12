@@ -20,37 +20,33 @@ import es.us.agoraus.counting.domain.Result;
 import es.us.agoraus.counting.integration.StorageServiceImpl;
 
 @RestController
-@RequestMapping(value="/count")
+@RequestMapping(value = "/count")
 public class ApiController {
-	
+
 	@Autowired
 	StorageServiceImpl storageService;
-	
+
 	/**
-	 * The following method is used to test the algorithm.
-	 * We simulate a votation, creating the some votes json and
-	 * crypting them. After that we call the method as if we obtained 
-	 * that crypted votes from the database.
+	 * The following method is used to test the algorithm. We simulate a
+	 * votation, creating the some votes json and crypting them. After that we
+	 * call the method as if we obtained that crypted votes from the database.
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping("/predefined")
-	public List<Result> predefinedCounting()
-			throws Exception {
-
-		List <Result> resultados = Test.referendumAlgorithmTestVotation();
-		
-		return resultados;
-
+	public List<Result> predefinedCounting() throws Exception {
+		List<Result> result = Test.referendumAlgorithmTestVotation();
+		return result;
 	}
 
 	/**
-	 * The following method computes a votation retrieving the encrypted 
-	 * votes from a database. We offer two ways to code the votes
-	 * of a certain votation. After we obtain the votes, they are transformed
-	 * in order to the codification obtained in the method call, and 
-	 * finally it runs the algorithm where the decrypt is done and the
-	 * votes are counted.
+	 * The following method computes a votation retrieving the encrypted votes
+	 * from a database. We offer two ways to code the votes of a certain
+	 * votation. After we obtain the votes, they are transformed in order to the
+	 * codification obtained in the method call, and finally it runs the
+	 * algorithm where the decrypt is done and the votes are counted.
+	 * 
 	 * @param pollId
 	 * @param codification
 	 * @param segment
@@ -58,33 +54,30 @@ public class ApiController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/{pollId}")
-	public List<Result> referendum(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) {
-		
+	public List<Result> referendum(@PathVariable String pollId,
+			@RequestParam(value = "cod", required = false) String codification,
+			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
+
 		EncryptedVotes votes;
 		List<byte[]> byteVotes;
-		
 		votes = storageService.getVotesForPoll(pollId);
-		
 		if ((codification == null) || (codification == "normal")) {
 			byteVotes = Transformations.transformStringToByteArray(votes.getVotes());
 		} else {
 			byteVotes = Transformations.transformByteArrayStringToByteArray(votes.getVotes());
 		}
-		
 		CountingAlgorithm algorithm = new ReferendumAlgorithm();
-		
 		if (segment != null) {
 			algorithm = new SegmentationAlgorithm(segment);
 		}
-		
-		final List<Result> resultados = algorithm.count(pollId, byteVotes);
-		
-		return resultados;
-
+		final List<Result> result = algorithm.count(pollId, byteVotes);
+		return result;
 	}
-	
+
 	@RequestMapping("/{pollId}/charts")
-	public ModelAndView chart(@PathVariable String pollId, @RequestParam (value = "cod", required = false) String codification, @RequestParam (value = "segment", required = false) SegmentationCriteria segment) {
+	public ModelAndView chart(@PathVariable String pollId,
+			@RequestParam(value = "cod", required = false) String codification,
+			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
 		final ModelAndView model = new ModelAndView("non-segmented-charts");
 		if (segment != null) {
 			model.addObject("criteria", segment);
