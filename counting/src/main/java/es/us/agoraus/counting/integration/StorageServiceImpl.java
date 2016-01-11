@@ -9,6 +9,8 @@ import retrofit.Call;
 @Component
 public class StorageServiceImpl extends BaseIntegrationService<StorageService> {
 
+	// With the following state we obtain the base URL from a property
+	// file. In this case, counting.properties.
 	@Value("${storage.base.url}")
 	private String storageBaseUrl;
 
