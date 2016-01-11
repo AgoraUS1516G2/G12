@@ -2,6 +2,8 @@ package es.us.agoraus.counting.dto;
 
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Vote {
@@ -61,6 +63,11 @@ public class Vote {
 
 	public void setPollId(String pollId) {
 		this.pollId = pollId;
+	}
+
+	public boolean isValid() {
+		return StringUtils.hasText(age) && !answers.isEmpty() && StringUtils.hasText(autonomousCommunity)
+				&& StringUtils.hasText(genre) && StringUtils.hasText(id) && StringUtils.hasText(pollId);
 	}
 
 	@Override

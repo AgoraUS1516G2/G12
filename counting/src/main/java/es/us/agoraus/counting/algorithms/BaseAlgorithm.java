@@ -11,6 +11,7 @@ import es.us.agoraus.counting.dto.AlgorithmResult;
 import es.us.agoraus.counting.dto.Vote;
 import es.us.agoraus.counting.dto.YesNoSettable;
 import es.us.agoraus.counting.exceptions.InvalidCodificationException;
+import es.us.agoraus.counting.exceptions.InvalidVoteException;
 import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 
@@ -66,8 +67,11 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 					throw new InvalidCodificationException();
 				}
 				Gson gson = new Gson();
-				Vote vot = gson.fromJson(res, Vote.class);
-				result.add(vot);
+				Vote vote = gson.fromJson(res, Vote.class);
+				if (!vote.isValid()) {
+					throw new InvalidVoteException();
+				}
+				result.add(vote);
 			}
 		}
 		return result;

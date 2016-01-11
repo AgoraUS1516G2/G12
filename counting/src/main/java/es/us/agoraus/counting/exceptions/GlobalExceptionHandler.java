@@ -20,4 +20,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	@ExceptionHandler(value = InvalidVoteException.class)
+	@ResponseBody
+	public ResponseEntity<ApiResponse> invalidVoteExceptionHandler(Exception e) {
+		ApiResponse apiResponse = new ApiResponse(Status.INVALID_VOTE);
+		return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+	}
+
 }
