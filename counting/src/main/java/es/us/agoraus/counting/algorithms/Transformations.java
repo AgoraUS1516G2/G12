@@ -11,7 +11,7 @@ public class Transformations {
 
 	public static final String NORMAL_COD = "normal";
 	public static final String SPECIAL_COD = "special";
-	
+
 	/**
 	 * The next method is used to transform a Byte Array inside a String into a
 	 * real Byte Array. This is needed due to the way we obtain the votes in
@@ -61,6 +61,36 @@ public class Transformations {
 		}
 
 		return result;
+	}
+
+	/**
+	 * The following method is used to chose which transformations must be
+	 * applied
+	 * 
+	 * @param codification,
+	 *            votes' codification
+	 * @param votes,
+	 *            String votes' list
+	 * @return
+	 */
+	public static List<byte[]> forCodification(final String codification, final List<String> votes) {
+		List<byte[]> result;
+		if ((codification == null) || (codification == NORMAL_COD)) {
+			result = Transformations.transformStringToByteArray(votes);
+		} else {
+			result = Transformations.transformByteArrayStringToByteArray(votes);
+		}
+		return result;
+	}
+
+	/**
+	 * This method is used prior to above method when special 
+	 * codification polls are involved.
+	 * @param votes
+	 * @return
+	 */
+	public static List<byte[]> specialCodification(final List<String> votes) {
+		return forCodification(SPECIAL_COD, votes);
 	}
 
 	/**
@@ -148,19 +178,5 @@ public class Transformations {
 			System.out.println("--------- Next element --------");
 		}
 
-	}
-
-	public static List<byte[]> forCodification(final String codification, final List<String> votes) {
-		List<byte[]> result;
-		if ((codification == null) || (codification == NORMAL_COD)) {
-			result = Transformations.transformStringToByteArray(votes);
-		} else {
-			result = Transformations.transformByteArrayStringToByteArray(votes);
-		}
-		return result;
-	}
-	
-	public static List<byte[]> specialCodification(final List<String> votes) {
-		return forCodification(SPECIAL_COD, votes);
 	}
 }

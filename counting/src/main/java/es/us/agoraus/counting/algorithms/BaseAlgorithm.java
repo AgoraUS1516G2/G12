@@ -17,10 +17,27 @@ import main.java.AuthorityImpl;
 public abstract class BaseAlgorithm implements CountingAlgorithm {
 
 	private static final Logger LOG = Logger.getLogger(BaseAlgorithm.class.getCanonicalName());
-	
+
 	protected static final String YES_ANSWER = "SI";
 	protected static final String NO_ANSWER = "NO";
 
+	/**
+	 * Class's main method. It decrypts votes and calls the counting function.
+	 */
+	public List<AlgorithmResult> count(final String pollId, final List<byte[]> votesArr) {
+		final List<Vote> votes = decryptVotes(pollId, votesArr);
+		return countingLogic(votes);
+	}
+
+	/**
+	 * The following method implements the necessary logic to decrypt votes.
+	 * This method is used after we have transformed the votes from the stored
+	 * string to a manipulable object.
+	 * 
+	 * @param pollId
+	 * @param votesArr
+	 * @return decrypted votes' list
+	 */
 	public List<Vote> decryptVotes(final String pollId, final List<byte[]> votesArr) {
 		Integer token;
 		Integer intPollId;
@@ -28,6 +45,7 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		List<Vote> result;
 
 		intPollId = Integer.valueOf(pollId);
+		// Token used to communicate securely with Verification Subsystem
 		token = Token.calculateToken(intPollId);
 		auth = new AuthorityImpl();
 		result = new ArrayList<Vote>();
@@ -55,19 +73,27 @@ public abstract class BaseAlgorithm implements CountingAlgorithm {
 		return result;
 	}
 
-	public List<AlgorithmResult> count(final String pollId, final List<byte[]> votesArr) {
-		final List<Vote> votes = decryptVotes(pollId, votesArr);
-		return countingLogic(votes);
-	}
-
+	/**
+	 * Method used to count poll's results, setting them in result parameter.
+	 * 
+	 * @param answer
+	 * @param result
+	 */
 	protected void incrementCount(final String answer, final YesNoSettable result) {
-		if (YES_ANSWER.equals(answer)) {
+		if (YES_ANSWER.equals(answer.toUpperCase())) {
 			result.setYes(result.getYes() + 1);
-		} else if ((NO_ANSWER.equals(answer))) {
+		} else if ((NO_ANSWER.equals(answer.toUpperCase()))) {
 			result.setNo(result.getNo() + 1);
 		}
 	}
 
+	/**
+	 * The following method does the own counting of a certain algorithm. It
+	 * must be overridden by algorithms extending this class.
+	 * 
+	 * @param votes
+	 * @return results' list
+	 */
 	protected abstract List<AlgorithmResult> countingLogic(final List<Vote> votes);
 
 }

@@ -31,7 +31,7 @@ public class ApiController extends BaseController {
 
 	/**
 	 * The following method is used to test the algorithm. We simulate a
-	 * votation, creating the some votes json and crypting them. After that we
+	 * poll, creating the some votes json and crypting them. After that we
 	 * call the method as if we obtained that crypted votes from the database.
 	 * 
 	 * @return
@@ -44,9 +44,9 @@ public class ApiController extends BaseController {
 	}
 
 	/**
-	 * The following method computes a votation retrieving the encrypted votes
+	 * The following method computes a poll retrieving the encrypted votes
 	 * from a database. We offer two ways to code the votes of a certain
-	 * votation. After we obtain the votes, they are transformed in order to the
+	 * poll. After we obtain the votes, they are transformed in order to the
 	 * codification obtained in the method call, and finally it runs the
 	 * algorithm where the decrypt is done and the votes are counted.
 	 * 
@@ -60,6 +60,7 @@ public class ApiController extends BaseController {
 	public ApiResponse referendum(@PathVariable String pollId,
 			@RequestParam(value = "cod", required = false) String codification,
 			@RequestParam(value = "segment", required = false) SegmentationCriteria segment) {
+		
 		Status status = Status.SUCCESS;
 		List<AlgorithmResult> algorithmResult;
 		EncryptedVotes votes = storageService.getVotesForPoll(pollId);

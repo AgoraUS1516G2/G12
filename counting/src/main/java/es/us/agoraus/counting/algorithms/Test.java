@@ -8,6 +8,13 @@ import es.us.agoraus.counting.security.Token;
 import main.java.AuthorityImpl;
 public class Test {
  
+	/**
+	 * This method is used to generate a test poll. In this method, some
+	 * votes are created and crypted to check the main algorithm.
+	 * It is used to debug our system in a isolated way.
+	 * @return
+	 * @throws Exception
+	 */
 	public static List<AlgorithmResult> referendumAlgorithmTestVotation() throws Exception {
 		
 		Integer pollId;
