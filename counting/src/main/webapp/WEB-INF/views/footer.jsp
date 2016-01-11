@@ -26,7 +26,7 @@
 	</div>
     <div class="footer-copyright">
     	<div class="container">
-        	© 2015 Universidad de Sevilla
+        	© <fmt:formatDate value="${date}" pattern="yyyy" /> Universidad de Sevilla
         	<a class="grey-text text-lighten-4 right" href="https://github.com/rafaeldrs/Recuento-Agora-US" target="blank">Repositorio del código en GitHub</a>
         </div>
 	</div>
