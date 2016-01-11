@@ -12,7 +12,7 @@ public class Vote {
 	private List<Answer> answers;
 	@SerializedName("autonomous_community")
 	private String autonomousCommunity;
-	private String genre;
+	private String gender;
 	private String id;
 	@SerializedName("id_poll")
 	private String pollId;
@@ -41,12 +41,12 @@ public class Vote {
 		this.autonomousCommunity = autonomousCommunity;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getId() {
@@ -67,13 +67,13 @@ public class Vote {
 
 	public boolean isValid() {
 		return StringUtils.hasText(age) && !answers.isEmpty() && StringUtils.hasText(autonomousCommunity)
-				&& StringUtils.hasText(genre) && StringUtils.hasText(id) && StringUtils.hasText(pollId);
+				&& StringUtils.hasText(gender) && StringUtils.hasText(id) && StringUtils.hasText(pollId);
 	}
 
 	@Override
 	public String toString() {
 		return "Voto [age=" + age + ", answers=" + answers + ", autonomous_community=" + autonomousCommunity
-				+ ", genre=" + genre + ", id=" + id + ", id_poll=" + pollId + "]";
+				+ ", gender=" + gender + ", id=" + id + ", id_poll=" + pollId + "]";
 	}
 
 }
