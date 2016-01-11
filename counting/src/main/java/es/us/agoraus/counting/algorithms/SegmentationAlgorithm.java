@@ -63,7 +63,7 @@ public class SegmentationAlgorithm extends BaseAlgorithm {
 			result = vote.getAge();
 			break;
 		case gender:
-			result = vote.getGenre();
+			result = vote.getGender();
 			break;
 		case aut_com:
 			result = vote.getAutonomousCommunity();
