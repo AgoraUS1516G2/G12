@@ -12,6 +12,7 @@ public class Vote {
 	private List<Answer> answers;
 	@SerializedName("autonomous_community")
 	private String autonomousCommunity;
+	@SerializedName("genre")
 	private String gender;
 	private String id;
 	@SerializedName("id_poll")

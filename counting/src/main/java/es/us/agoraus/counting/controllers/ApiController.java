@@ -90,8 +90,10 @@ public class ApiController extends BaseController {
 			model.addObject("criteria", segment);
 			model.setViewName("segmented-charts");
 		}
-		final AlgorithmDetails result = referendum(pollId, codification, segment).getAlgorithm();
-		model.addObject("data", result.getResult());
+		final ApiResponse count = referendum(pollId, codification, segment);
+		final AlgorithmDetails algDetails = count.getAlgorithm();
+		final List<AlgorithmResult> result = algDetails != null ? algDetails.getResult() : null;
+		model.addObject("data", result);
 		return model;
 	}
 
