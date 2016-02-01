@@ -1,21 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head>
-<title>Home</title>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-</head>
-<body>
-
-	<div class="container">
+<t:masterpage>
+    <jsp:body>
+    	<div class="container">
 		<h1>Subsistema "Recuento y Modificación de Resultados"</h1>
 
 		<p class="flow-text">Subsistema encargado de la realización del
@@ -175,5 +164,6 @@
 			</tbody>
 		</table>
 	</div>
-</body>
-</html>
+    </jsp:body>
+</t:masterpage>
+
