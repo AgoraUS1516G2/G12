@@ -9,3 +9,16 @@
 	<!-- Compiled and minified JavaScript -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+		
+<nav>
+	<div class="container nav-wrapper">
+		<div class="brand-logo">
+			Ágora US
+		</div>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a href="./">Inicio</a></li>
+			<li><a href="./count/1/charts?cod=special">Ejemplo 1</a></li>
+			<li><a href="./count/1/charts?cod=special&segment=gender">Ejemplo 2</a></li>
+		</ul>
+	</div>
+</nav>
