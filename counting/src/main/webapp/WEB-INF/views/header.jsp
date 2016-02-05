@@ -12,7 +12,7 @@
 		
 <nav>
 	<div class="container nav-wrapper">
-		<img height="64px" src="/counting/resources/images/logo.png"/>
+		<img height="64px" src="resources/images/logo.png"/>
 		<div class="brand-logo">
 			Ágora US
 		</div>
